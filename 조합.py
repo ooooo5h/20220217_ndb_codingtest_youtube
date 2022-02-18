@@ -10,3 +10,14 @@ result = list(combinations(data, 2))
 print(result)
 
 # 결과값 : [('A', 'B'), ('A', 'C'), ('B', 'C')]
+
+
+# 중복조합
+from itertools import combinations_with_replacement
+
+data_a = ['A', 'B', 'C']
+
+result_a = list(combinations_with_replacement(data_a, 2))
+print(result_a)
+
+# 결과값 : [('A', 'A'), ('A', 'B'), ('A', 'C'), ('B', 'B'), ('B', 'C'), ('C', 'C')]
