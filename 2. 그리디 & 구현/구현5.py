@@ -15,11 +15,11 @@ def make_beautiful(s):
         elif letter in list(string.ascii_uppercase):
             alphabet += letter
     
-    # print(num)
-    # print(''.join(sorted(alphabet)))
+
+
     alphabet = ''.join(sorted(alphabet))
     
-    # print(alphabet+num)
-    return alphabet+num  # 어이 왜 리턴이 안되지..??
 
-make_beautiful('K1KA5CB7')
+    return alphabet+num  
+
+print(make_beautiful('K1KA5CB7'))
