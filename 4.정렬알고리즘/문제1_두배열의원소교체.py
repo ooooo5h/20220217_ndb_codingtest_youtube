@@ -1,19 +1,19 @@
 n,k = map(int, input().split())
-
 a = list(map(int, input().split()))
 b = list(map(int, input().split()))
 
-a.sort()   # a의 작은수를 b의 큰수와 바꾸면 되기 때문에 a는 작은수대로 정렬하고, b는 큰수대로 정렬
+# a의 작은 수들을 b의 큰수로 바꿔주면 됨. 
+# 정렬이 필요하다. a는 작은수대로, b는 큰수부터
+a.sort()  
 b.sort(reverse=True)
 
-# 첫번째 인덱스부터 확인해나가면서 두배열의 원소를 k번까지 비교해야함
+# k번만큼만 바꿀 수 있음
 for i in range(k):
-    # a의 원소가 b원소보다 작으면 교환
+    # a가 더 작으면 바꾸고
     if a[i] < b[i]:
         a[i], b[i] = b[i], a[i]
-        
-    # a의 원소가 b원소보다 크거나 같으면 반복문 탈출
+    # 같거나 크면 안바꾸기
     else:
         break
-    
+
 print(sum(a))
