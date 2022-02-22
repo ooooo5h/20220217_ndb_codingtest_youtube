@@ -2,17 +2,16 @@
 
 from bisect import bisect_left, bisect_right
 
-def count_by_range(array, left_value, right_value):
-    right_index = bisect_right(array, right_value)
-    left_index = bisect_left(array, left_value)
-    return right_index - left_index
+# array에서 x부터 y까지의 개수를 세는 함수
+def count_by_range(array, x, y):
+    count_right = bisect_right(array, x)
+    count_left = bisect_left(array, y)
+    return count_right - count_left
 
-# n: 데이터의 개수 , x : 찾고자 하는 값
-n,x = map(int, input().split())
-numbers = list(map(int, input().split()))
+n, x = map(int, input().split())
+list = list(map(int, input().split()))
 
-# x부터 x까지의 개수 => x의 총 갯수 구하기
-count = count_by_range(numbers, x, x)
+count = count_by_range(list, x, x)
 
 if count == 0:
     print(-1)
