@@ -19,6 +19,22 @@ def binarry_search(array, target, start, end):
     else :
         return binarry_search(array, target, mid+1, end)
     
+    
+
+# 반복문 이용하여 이진 탐색 소스 코드 구현
+def binarry_search(array, target, start, end):
+    while start <= end:
+        mid = (start+end) // 2
+
+        if array[mid] == target:
+            return mid
+        
+        # 중간점의 값보다 찾는 값이 작으면 오른쪽 버리기
+        elif array[mid] > target:
+            end = mid-1
+        else :
+            start = mid+1
+    return None    
 
 #n(원소의 개수)과 target(찾고자 하는 값)을 입력받기
 n, target = list(map(int, input().split()))
