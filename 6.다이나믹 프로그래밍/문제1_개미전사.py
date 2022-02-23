@@ -1,17 +1,14 @@
-# 정수 n입력
-n = int(input())
+# 개미전사 풀이 재구현
 
-# 식량 정보 입력받기
-array = list(map(int, input().split()))
+n = int(input('n개의 창고'))
+k_array = list(map(int, input('n개의 식량 개수 입력').split()))
 
-# 계산된 결과를 저장하기 위한 DP테이블 0으로 초기화
-d = [0] * 100
+d = [0] * 100 # 100개까지 n이 가능함
 
-# 바텀업 다이나믹 프로그래밍 진행
-d[0] = array[0]
-d[1] = max(array[0], array[1])  # d[1]은 한개의 값만 골라야 함! 중복 노노
+d[0] = k_array[0]   
+d[1] = max(k_array[0], k_array[1])    # 두번째 창고를 터느냐 마느냐를 위해 두 값의 최대값 구하기
 
-for i in range(2, n):
-    d[i] = max(d[i-1], d[i-2]+array[i])
+for i in range(2, n):  
+    d[i] = max(d[i-1], d[i-2]+k_array[i])     # 바로 앞에서 터는 양과 현재 창고까지 더한 값 중 큰값을 대입하면 된다
     
 print(d[n-1])
