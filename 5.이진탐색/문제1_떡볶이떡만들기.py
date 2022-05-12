@@ -1,27 +1,31 @@
 # 떡볶이 떡 만들기
-# n은 떡의 개수, m은 요청한 떡의 길이
-n, m = list(map(int,input().split()))
+# 떡의 개수 n, 떡의 길이 m
 
-# 각 떡의 개별 높이 입력
-array = list(map(int,input().split()))
+def Count(len):
+    cnt = 0
+    for x in rices:
+        if x <= len:
+            cnt += 0
+        else:
+            cnt += x-len
+    return cnt
 
-start = 0   # 시작점
-end = max(array)  # 끝점은 떡 중 제일 긴 떡의 값으로 설정
-result = 0  # m의 떡을 주기 위한 떡높이의 최대값
 
-while start<= end:  # 시작점이 끝점보다 작을때만 코드 실행!
-    total = 0  # m에 달성했는지 확인해줄 값
-    mid = (start+end)//2  # 소수점을 날려준 중간값 설정
-    
-    for x in array:   # 떡을 하나 씩 꺼내면서 비교하기
-        if x > mid:   # 꺼낸 떡의 길이가 중간값(커팅값)보다 크다면 떡이 잘리게됨.
-            total += x-mid   # 꺼낸 떡을 자르고난 나머지를 손님이 가져가므로, 토탈에 합산해주기
-            
-    if total < m:  # 이제까지 자른 떡의 총 합이, 손님이 요청한 값 보다 작다면 더 많이 잘라야하기 때문에 끝점을 이동시켜서 더 자르기
-        end = mid-1
-        
-    else:      # 떡의 총합이 요청한 떡 길이보다 같거나 크다면
-        result = mid   # 충족했으므로 중간값을 최대값에 대입해주고
-        start = mid+1  # 시작점을 좁혀나가주기
-        
-print(result)
+n, m = map(int, input().split())   # 4 6
+rices = list(map(int, input().split()))   # 19 15 10 17
+
+# 적어도 m만큼의 떡을 집에 가져가기 위해
+# 설정할 수 있는 높이의 최댓값은?    # 정답은 15
+
+lt = 0
+rt = max(rices)
+res = 0
+while lt <= rt:
+    mid = (lt+rt)//2
+    if Count(mid) >= m:
+        res = mid
+        lt = mid + 1
+    else:
+        rt = mid - 1
+
+print(res)
